@@ -1,0 +1,46 @@
+;; Docs: https://github.com/jtroo/kanata/blob/main/docs/config.adoc
+;; Modifiers: https://github.com/jtroo/kanata/blob/main/docs/config.adoc#output-chordscombos
+;; Keynames: https://github.com/jtroo/kanata/blob/main/cfg_samples/kanata.kbd
+
+
+(defcfg
+  process-unmapped-keys false
+)
+
+
+(defsrc
+              q    w    e    r
+  caps        a    s    d    f        h
+                             v   b    n
+                                spc
+)
+
+
+(deflayer default
+              _    _    _   _
+  @cap        _    _    _   _         _
+                            _   _     _
+                                _
+)
+
+
+(deflayer caps
+              @CST    up    @CT     bspc
+  _           left   down   rght    ret              home
+                                    @vdl   @vdr      end
+                                           @Cp
+)
+
+
+(deafalias
+  Cp C-p
+;;  Cz C-z
+;;  Cx C-x
+;;  Cc C-c
+;;  Cv C-v
+  CT C-tab
+  CST C-S-tab
+  vdl M-C-left
+  vdr M-C-right
+  cap (tap-hold-press 200 200 esc (layer-toggle caps))
+)
